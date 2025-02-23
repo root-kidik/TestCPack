@@ -1,0 +1,78 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 25,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "description": "Fully featured Debug build",
+            "inherits": [
+                "common-flags"
+            ],
+            "binaryDir": "${sourceDir}/build-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "description": "Fully featured Release build",
+            "inherits": [
+                "common-flags"
+            ],
+            "binaryDir": "${sourceDir}/build-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "common-flags",
+            "hidden": true,
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build-debug",
+            "configurePreset": "debug",
+            "hidden": false
+        },
+        {
+            "name": "build-release",
+            "configurePreset": "release",
+            "hidden": false
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "test-debug",
+            "configurePreset": "debug",
+            "hidden": false
+        },
+        {
+            "name": "test-release",
+            "configurePreset": "release",
+            "hidden": false
+        }
+    ],
+    "packagePresets": [
+        {
+            "name": "cpack-debug",
+            "configurePreset": "debug",
+            "hidden": false
+        },
+        {
+            "name": "cpack-release",
+            "configurePreset": "release",
+            "hidden": false
+        }
+    ]
+}
